@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - SpringBootJwtAuthenticationApplication",
+            "request": "launch",
+            "mainClass": "com.proyectonube.jwtauthentication.SpringBootJwtAuthenticationApplication",
+            "projectName": "SpringBootJwtAuthentication"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - SpringBootJwtAuthenticationApplication",
+            "request": "launch",
+            "mainClass": "com.grokonez.jwtauthentication.SpringBootJwtAuthenticationApplication",
+            "projectName": "SpringBootJwtAuthentication"
+        }
+    ]
+}
