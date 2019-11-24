@@ -1,4 +1,4 @@
-package com.proyectonube.jwtauthentication.controller;
+package com.proyectonube.jwtauthentication.restcontroller;
 
 import java.util.HashSet;
 import java.util.Set;
