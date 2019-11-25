@@ -1,4 +1,4 @@
-package com.proyectonube.jwtauthentication.security.jwt;
+package com.proyectonube.jwtauthentication.service.jwt;
 
 import java.io.IOException;
 

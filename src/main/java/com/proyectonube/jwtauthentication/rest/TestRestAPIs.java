@@ -1,4 +1,4 @@
-package com.proyectonube.jwtauthentication.restcontroller;
+package com.proyectonube.jwtauthentication.rest;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;

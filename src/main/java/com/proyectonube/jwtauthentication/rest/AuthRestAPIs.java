@@ -1,4 +1,4 @@
-package com.proyectonube.jwtauthentication.restcontroller;
+package com.proyectonube.jwtauthentication.rest;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,7 +27,7 @@ import com.proyectonube.jwtauthentication.model.RoleName;
 import com.proyectonube.jwtauthentication.model.User;
 import com.proyectonube.jwtauthentication.repository.RoleRepository;
 import com.proyectonube.jwtauthentication.repository.UserRepository;
-import com.proyectonube.jwtauthentication.security.jwt.JwtProvider;
+import com.proyectonube.jwtauthentication.service.jwt.JwtProvider;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

@@ -1,4 +1,4 @@
-package com.proyectonube.jwtauthentication.security.services;
+package com.proyectonube.jwtauthentication.service.details;
 
 import com.proyectonube.jwtauthentication.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;

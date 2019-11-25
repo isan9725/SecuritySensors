@@ -1,4 +1,4 @@
-package com.proyectonube.jwtauthentication.security;
+package com.proyectonube.jwtauthentication.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,9 +14,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.proyectonube.jwtauthentication.security.jwt.JwtAuthEntryPoint;
-import com.proyectonube.jwtauthentication.security.jwt.JwtAuthTokenFilter;
-import com.proyectonube.jwtauthentication.security.services.UserDetailsServiceImpl;
+import com.proyectonube.jwtauthentication.service.jwt.JwtAuthEntryPoint;
+import com.proyectonube.jwtauthentication.service.jwt.JwtAuthTokenFilter;
+import com.proyectonube.jwtauthentication.service.details.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
