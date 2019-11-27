@@ -1,8 +1,12 @@
 package com.proyectonube.jwtauthentication.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +21,13 @@ public class Data{
 
     @Column
     private Integer deviceId;
+
+    @Column(name = "date")
+    private LocalDate date;
+
+    @ManyToOne
+    @JoinColumn(name = "id_dataset")
+    private Dataset dataset;
 
     public Data(){
 
@@ -46,8 +57,37 @@ public class Data{
         this.deviceId = deviceId;
     }
 
+    /**
+     * @return the dataset
+     */
+    public Dataset getDataset() {
+        return dataset;
+    }
+
+    /**
+     * @param dataset the dataset to set
+     */
+    public void setDataset(Dataset dataset) {
+        this.dataset = dataset;
+    }
+
+    /**
+     * @return the date
+     */
+    public LocalDate getDate() {
+        return date;
+    }
+
+    /**
+     * @param date the date to set
+     */
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     public Data(String value, Integer deviceId) {
         this.value = value;
         this.deviceId = deviceId;
     }
+
 }
