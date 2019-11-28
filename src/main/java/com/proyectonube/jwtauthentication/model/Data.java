@@ -8,26 +8,30 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity
 @Table(name = "data")
 public class Data{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
     @Column (name = "value")
     private String value;
 
     @Column
-    private Integer deviceId;
+    private Integer device_id;
 
     @Column(name = "date")
     private LocalDate date;
 
     @ManyToOne
-    @JoinColumn(name = "id_dataset")
-    private Dataset dataset;
+    @JoinColumn(name = "datatype_id")
+    private Datatype datatype;
 
     public Data(){
 
@@ -50,25 +54,25 @@ public class Data{
     }
 
     public Integer getDeviceId() {
-        return deviceId;
+        return device_id;
     }
 
     public void setDeviceId(Integer deviceId) {
-        this.deviceId = deviceId;
+        this.device_id = deviceId;
     }
 
     /**
-     * @return the dataset
+     * @return the datatype
      */
-    public Dataset getDataset() {
-        return dataset;
+    public Datatype getDatatype() {
+        return datatype;
     }
 
     /**
-     * @param dataset the dataset to set
+     * @param datatype the datatype to set
      */
-    public void setDataset(Dataset dataset) {
-        this.dataset = dataset;
+    public void setDatatype(Datatype datatype) {
+        this.datatype = datatype;
     }
 
     /**
@@ -87,7 +91,7 @@ public class Data{
 
     public Data(String value, Integer deviceId) {
         this.value = value;
-        this.deviceId = deviceId;
+        this.device_id = deviceId;
     }
 
 }

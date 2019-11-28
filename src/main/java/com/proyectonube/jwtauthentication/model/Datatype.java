@@ -2,16 +2,16 @@ package com.proyectonube.jwtauthentication.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity
-@Table(name = "dataset")
-public class Dataset{
+@Table(name="datatype")
+public class Datatype{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class Dataset{
 
     @ManyToOne
     @JoinColumn(name = "dataset_id")
-    private Project project;
+    private Dataset dataset;
 
     public Integer getId() {
         return id;
@@ -32,25 +32,16 @@ public class Dataset{
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Dataset getDataset() {
+        return dataset;
     }
 
-    public void setName(String name) {
+    public void setDataset(Dataset dataset) {
+        this.dataset = dataset;
+    }
+
+    public Datatype(String name) {
         this.name = name;
     }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
-    public Dataset(String name) {
-        this.name = name;
-    }
-
     
 }
