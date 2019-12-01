@@ -1,7 +1,5 @@
 package com.proyectonube.jwtauthentication.message.request;
 
-import java.util.Set;
-
 import javax.validation.constraints.*;
 
 public class SignUpForm {
@@ -18,7 +16,7 @@ public class SignUpForm {
     @Email
     private String email;
     
-    private Set<String> role;
+
     
     @NotBlank
     @Size(min = 6, max = 40)

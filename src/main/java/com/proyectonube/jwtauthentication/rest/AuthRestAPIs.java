@@ -1,7 +1,5 @@
 package com.proyectonube.jwtauthentication.rest;
 
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.validation.Valid;
 
