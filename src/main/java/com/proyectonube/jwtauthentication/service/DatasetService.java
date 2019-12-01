@@ -17,4 +17,9 @@ public class DatasetService{
     public List < Dataset > getDataset(){
         return datasetRepository.findAll();
     }
+
+    public Dataset findDataset(Integer id_dataset){
+        Dataset ds = datasetRepository.getOne(id_dataset);
+        return ds;
+    }
 }

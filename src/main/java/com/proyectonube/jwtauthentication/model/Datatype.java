@@ -1,10 +1,12 @@
 package com.proyectonube.jwtauthentication.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,12 +19,11 @@ public class Datatype{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "dataset_id")
-    private Dataset dataset;
+    @OneToMany(mappedBy = "datatype", cascade = CascadeType.ALL)
+    private List<Data> data;
 
     public Integer getId() {
         return id;
@@ -32,16 +33,31 @@ public class Datatype{
         this.id = id;
     }
 
-    public Dataset getDataset() {
-        return dataset;
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
     }
 
-    public void setDataset(Dataset dataset) {
-        this.dataset = dataset;
-    }
-
-    public Datatype(String name) {
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
         this.name = name;
     }
-    
+
+    /**
+     * @return the data
+     */
+    public List<Data> getData() {
+        return data;
+    }
+
+    /**
+     * @param data the data to set
+     */
+    public void setData(List<Data> data) {
+        this.data = data;
+    }
 }
