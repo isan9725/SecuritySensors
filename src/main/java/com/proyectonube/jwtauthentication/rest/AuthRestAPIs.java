@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.proyectonube.jwtauthentication.message.request.LoginForm;
 import com.proyectonube.jwtauthentication.message.request.SignUpForm;
 import com.proyectonube.jwtauthentication.message.response.JwtResponse;
-import com.proyectonube.jwtauthentication.model.Role;
-import com.proyectonube.jwtauthentication.model.RoleName;
+
+
 import com.proyectonube.jwtauthentication.model.User;
-import com.proyectonube.jwtauthentication.repository.RoleRepository;
+
 import com.proyectonube.jwtauthentication.repository.UserRepository;
 import com.proyectonube.jwtauthentication.service.jwt.JwtProvider;
 
@@ -40,8 +40,7 @@ public class AuthRestAPIs {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    RoleRepository roleRepository;
+   
 
     @Autowired
     PasswordEncoder encoder;
@@ -81,26 +80,9 @@ public class AuthRestAPIs {
         User user = new User(signUpRequest.getName(), signUpRequest.getUsername(),
                 signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
 
-        Set<String> strRoles = signUpRequest.getRole();
-        Set<Role> roles = new HashSet<>();
-
-        strRoles.forEach(role -> {
-        	switch(role) {
-	    		
-	    		case "pm":
-	            	Role pmRole = roleRepository.findByName(RoleName.ROLE_PM)
-	                .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
-	            	roles.add(pmRole);
-	            	
-	    			break;
-	    		default:
-	        		Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
-	                .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
-	        		roles.add(userRole);        			
-        	}
-        });
         
-        user.setRoles(roles);
+
+        
         userRepository.save(user);
 
         return ResponseEntity.ok().body("User registered successfully!");
