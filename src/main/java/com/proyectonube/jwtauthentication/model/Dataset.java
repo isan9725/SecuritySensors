@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "dataset")
 public class Dataset{
@@ -24,7 +26,8 @@ public class Dataset{
     @OneToMany(mappedBy = "dataset", cascade = CascadeType.ALL)
     private List<Data> data;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_project")
     private Project project;
 

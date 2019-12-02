@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,11 +33,12 @@ public class Data{
     @Column(name = "date")
     private LocalDate date;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_datatype")
     private Datatype datatype;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_dataset")
     private Dataset dataset;
 

@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "project")
 public class Project{
@@ -31,10 +33,11 @@ public class Project{
     @OneToMany(mappedBy = "project")
     private List<Dataset> dataset;
 
+    @JsonBackReference
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "project_permission",
-        joinColumns = @JoinColumn(name="project_id"),
-        inverseJoinColumns = @JoinColumn(name="permission_id"))
+    @JoinTable(name = "user_project",
+        joinColumns = @JoinColumn(name="id_project"),
+        inverseJoinColumns = @JoinColumn(name="id_user"))
     private List < User > users;
 
 
