@@ -1,8 +1,16 @@
 package com.proyectonube.jwtauthentication.model;
 
-import javax.persistence.Column;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -10,17 +18,23 @@ import javax.persistence.Table;
 public class Dataset{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
-    private String dataType;
+    @OneToMany(mappedBy = "dataset", cascade = CascadeType.ALL)
+    private List<Data> data;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_project")
+    private Project project;
 
     public Dataset() {
     }
 
-    public Dataset(Integer id, String dataType) {
+    public Dataset(Integer id, List<Data> data, Project project) {
         this.id = id;
-        this.dataType = dataType;
+        this.data = data;
+        this.project = project;
     }
 
     public Integer getId() {
@@ -31,12 +45,20 @@ public class Dataset{
         this.id = id;
     }
 
-    public String getDataType() {
-        return this.dataType;
+    public List<Data> getData() {
+        return this.data;
     }
 
-    public void setDataType(String dataType) {
-        this.dataType = dataType;
+    public void setData(List<Data> data) {
+        this.data = data;
+    }
+
+    public Project getProject() {
+        return this.project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     public Dataset id(Integer id) {
@@ -44,8 +66,13 @@ public class Dataset{
         return this;
     }
 
-    public Dataset dataType(String dataType) {
-        this.dataType = dataType;
+    public Dataset data(List<Data> data) {
+        this.data = data;
+        return this;
+    }
+
+    public Dataset project(Project project) {
+        this.project = project;
         return this;
     }
 }

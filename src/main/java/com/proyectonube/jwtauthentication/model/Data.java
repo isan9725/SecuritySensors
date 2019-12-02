@@ -4,37 +4,57 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity
 @Table(name = "data")
 public class Data{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
     @Column (name = "value")
     private String value;
 
-    @Column
-    private Integer deviceId;
+    @Column(name = "device_id")
+    private Integer device_id;
 
     @Column(name = "date")
     private LocalDate date;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_datatype")
+    private Datatype datatype;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_dataset")
     private Dataset dataset;
 
-    public Data(){
 
+    public Data() {
+    }
+
+    public Data(Integer id, String value, Integer device_id, LocalDate date, Datatype datatype, Dataset dataset) {
+        this.id = id;
+        this.value = value;
+        this.device_id = device_id;
+        this.date = date;
+        this.datatype = datatype;
+        this.dataset = dataset;
     }
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Integer id) {
@@ -42,52 +62,72 @@ public class Data{
     }
 
     public String getValue() {
-        return value;
+        return this.value;
     }
 
     public void setValue(String value) {
         this.value = value;
     }
 
-    public Integer getDeviceId() {
-        return deviceId;
+    public Integer getDevice_id() {
+        return this.device_id;
     }
 
-    public void setDeviceId(Integer deviceId) {
-        this.deviceId = deviceId;
+    public void setDevice_id(Integer device_id) {
+        this.device_id = device_id;
     }
 
-    /**
-     * @return the dataset
-     */
-    public Dataset getDataset() {
-        return dataset;
-    }
-
-    /**
-     * @param dataset the dataset to set
-     */
-    public void setDataset(Dataset dataset) {
-        this.dataset = dataset;
-    }
-
-    /**
-     * @return the date
-     */
     public LocalDate getDate() {
-        return date;
+        return this.date;
     }
 
-    /**
-     * @param date the date to set
-     */
     public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public Data(String value, Integer deviceId) {
-        this.value = value;
-        this.deviceId = deviceId;
+    public Datatype getDatatype() {
+        return this.datatype;
     }
 
+    public void setDatatype(Datatype datatype) {
+        this.datatype = datatype;
+    }
+
+    public Dataset getDataset() {
+        return this.dataset;
+    }
+
+    public void setDataset(Dataset dataset) {
+        this.dataset = dataset;
+    }
+
+    public Data id(Integer id) {
+        this.id = id;
+        return this;
+    }
+
+    public Data value(String value) {
+        this.value = value;
+        return this;
+    }
+
+    public Data device_id(Integer device_id) {
+        this.device_id = device_id;
+        return this;
+    }
+
+    public Data date(LocalDate date) {
+        this.date = date;
+        return this;
+    }
+
+    public Data datatype(Datatype datatype) {
+        this.datatype = datatype;
+        return this;
+    }
+
+    public Data dataset(Dataset dataset) {
+        this.dataset = dataset;
+        return this;
+    }
 }
