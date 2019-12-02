@@ -19,13 +19,18 @@ public class ProjectService{
         return projectRepository.findAll();
     }
 
-    public Project create(ProjectRequest project){
+    public Project create(ProjectRequest projectR){
         Project createProject = new Project();
 
-        createProject.setProjectName(project.getProjectName());
-        createProject.setDescription(project.getDescription());
+        createProject.setProjectName(projectR.getProjectName());
+        createProject.setDescription(projectR.getDescription());
 
         return projectRepository.save(createProject);
+    }
+
+    public Project findProject(Integer id_project){
+        Project prt = projectRepository.getOne(id_project);
+        return prt;
     }
 
 }
