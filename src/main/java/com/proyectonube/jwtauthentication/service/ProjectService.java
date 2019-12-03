@@ -3,6 +3,7 @@ package com.proyectonube.jwtauthentication.service;
 import java.util.List;
 
 import com.proyectonube.jwtauthentication.message.request.ProjectRequest;
+import com.proyectonube.jwtauthentication.model.Message;
 import com.proyectonube.jwtauthentication.model.Project;
 import com.proyectonube.jwtauthentication.repository.ProjectRepository;
 
@@ -31,6 +32,13 @@ public class ProjectService{
     public Project findProject(Integer id_project){
         Project prt = projectRepository.getOne(id_project);
         return prt;
+    }
+
+    public Message update(ProjectRequest projectR){
+
+        Message m = new Message();
+
+        return m;
     }
 
 }
