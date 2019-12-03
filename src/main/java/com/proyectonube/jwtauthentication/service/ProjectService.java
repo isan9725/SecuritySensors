@@ -1,6 +1,7 @@
 package com.proyectonube.jwtauthentication.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.proyectonube.jwtauthentication.message.request.ProjectRequest;
 import com.proyectonube.jwtauthentication.model.Message;
@@ -16,8 +17,17 @@ public class ProjectService{
     @Autowired
     private ProjectRepository projectRepository;
 
-    public List< Project > getProject(){
+    public List< Project > getListProject(){
         return projectRepository.findAll();
+    }
+
+    public Project getProject(Integer id){
+        Optional<Project> opt = projectRepository.findById(id);
+        if(opt.isPresent()){
+            return opt.get();
+        }else{
+            throw new RuntimeException("No se encontro el proyecto con el id " + id);
+        }
     }
 
     public Project create(ProjectRequest projectR){
@@ -36,6 +46,12 @@ public class ProjectService{
 
     public Message update(ProjectRequest projectR){
 
+        Message m = new Message();
+
+        return m;
+    }
+
+    public Message delete(Integer id){
         Message m = new Message();
 
         return m;

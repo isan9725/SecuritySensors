@@ -10,7 +10,9 @@ import com.proyectonube.jwtauthentication.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,8 +26,14 @@ public class ProjectRest{
 
     @GetMapping("/project")
     public ResponseEntity< List< Project > > listProject(){
-        List<Project> project = projectService.getProject();
+        List<Project> project = projectService.getListProject();
         return ResponseEntity.ok(project);
+    }
+
+    @GetMapping("/project/{id}")
+    public ResponseEntity<Project> getProjectById(@PathVariable Integer id){
+        Project pt = projectService.getProject(id);
+        return ResponseEntity.ok(pt);
     }
 
     @PostMapping("/project")
@@ -37,6 +45,12 @@ public class ProjectRest{
     @PutMapping("/project")
     public ResponseEntity<Message> updateProject(@RequestBody ProjectRequest project){
         Message m = projectService.update(project);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(m);
+    }
+
+    @DeleteMapping("/project/{id}")
+    public ResponseEntity<Message> deleteProject(@PathVariable Integer id){
+        Message m = projectService.delete(id);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(m);
     }
 }

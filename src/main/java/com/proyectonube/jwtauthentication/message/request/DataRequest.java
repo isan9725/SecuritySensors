@@ -1,6 +1,6 @@
 package com.proyectonube.jwtauthentication.message.request;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotBlank;
 
@@ -13,7 +13,7 @@ public class DataRequest {
     private Integer device_id;
 
     @NotBlank
-    private LocalDate date;
+    private LocalDateTime date;
 
     @NotBlank
     private Integer datatype;
@@ -25,7 +25,7 @@ public class DataRequest {
     public DataRequest() {
     }
 
-    public DataRequest(String value, Integer device_id, LocalDate date, Integer datatype, Integer dataset) {
+    public DataRequest(String value, Integer device_id, LocalDateTime date, Integer datatype, Integer dataset) {
         this.value = value;
         this.device_id = device_id;
         this.date = date;
@@ -49,11 +49,11 @@ public class DataRequest {
         this.device_id = device_id;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return this.date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -83,7 +83,7 @@ public class DataRequest {
         return this;
     }
 
-    public DataRequest date(LocalDate date) {
+    public DataRequest date(LocalDateTime date) {
         this.date = date;
         return this;
     }

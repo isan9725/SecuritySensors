@@ -23,6 +23,7 @@ com\proyectonube\jwtauthentication\service\DatasetService.class
 com\proyectonube\jwtauthentication\message\request\DataRequest.class
 com\proyectonube\jwtauthentication\service\jwt\JwtAuthTokenFilter.class
 com\proyectonube\jwtauthentication\repository\UserRepository.class
+com\proyectonube\jwtauthentication\model\Message.class
 com\proyectonube\jwtauthentication\rest\DataRest.class
 com\proyectonube\jwtauthentication\service\details\UserDetailsServiceImpl.class
 com\proyectonube\jwtauthentication\repository\DatasetRepository.class

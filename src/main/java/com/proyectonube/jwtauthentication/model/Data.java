@@ -1,6 +1,6 @@
 package com.proyectonube.jwtauthentication.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +31,7 @@ public class Data{
     private Integer device_id;
 
     @Column(name = "date")
-    private LocalDate date;
+    private LocalDateTime date;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_datatype")
@@ -46,7 +46,7 @@ public class Data{
     public Data() {
     }
 
-    public Data(Integer id, String value, Integer device_id, LocalDate date, Datatype datatype, Dataset dataset) {
+    public Data(Integer id, String value, Integer device_id, LocalDateTime date, Datatype datatype, Dataset dataset) {
         this.id = id;
         this.value = value;
         this.device_id = device_id;
@@ -79,11 +79,11 @@ public class Data{
         this.device_id = device_id;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return this.date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -118,7 +118,7 @@ public class Data{
         return this;
     }
 
-    public Data date(LocalDate date) {
+    public Data date(LocalDateTime date) {
         this.date = date;
         return this;
     }

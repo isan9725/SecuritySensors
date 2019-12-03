@@ -1,6 +1,7 @@
 package com.proyectonube.jwtauthentication.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.proyectonube.jwtauthentication.model.Datatype;
 import com.proyectonube.jwtauthentication.model.Message;
@@ -42,6 +43,22 @@ public class DatatypeService{
         }else{
             m.setText("No se pudo Actualizar");
             m.setIcon("icon");
+        }
+        return m;
+    }
+
+    public Message delete(Integer id){
+        Message m = new Message();
+        Optional<Datatype> datatype = datatypeRepository.findById(id);
+        if(datatype.isPresent()){
+            datatypeRepository.delete(datatype.get());
+            
+            m.setText("Datatype Eliminado con éxito");
+            m.setIcon("icon");
+        }else{
+            m.setText("Datatyoe no encontrado");
+            m.setIcon("icon");
+            throw new RuntimeException("Datatype no encontrado con el id " + id);
         }
         return m;
     }
