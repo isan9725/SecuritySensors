@@ -3,6 +3,7 @@ package com.proyectonube.jwtauthentication.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,6 +24,9 @@ public class Dataset{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "name")
+    private String name;
+
     @OneToMany(mappedBy = "dataset", cascade = CascadeType.ALL)
     private List<Data> data;
 
@@ -31,11 +35,13 @@ public class Dataset{
     @JoinColumn(name = "id_project")
     private Project project;
 
+
     public Dataset() {
     }
 
-    public Dataset(Integer id, List<Data> data, Project project) {
+    public Dataset(Integer id, String name, List<Data> data, Project project) {
         this.id = id;
+        this.name = name;
         this.data = data;
         this.project = project;
     }
@@ -46,6 +52,14 @@ public class Dataset{
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Data> getData() {
@@ -69,6 +83,11 @@ public class Dataset{
         return this;
     }
 
+    public Dataset name(String name) {
+        this.name = name;
+        return this;
+    }
+
     public Dataset data(List<Data> data) {
         this.data = data;
         return this;
@@ -77,5 +96,5 @@ public class Dataset{
     public Dataset project(Project project) {
         this.project = project;
         return this;
-    }
+    }   
 }

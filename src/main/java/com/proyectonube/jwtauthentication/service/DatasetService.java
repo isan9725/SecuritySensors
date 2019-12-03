@@ -31,6 +31,8 @@ public class DatasetService{
     public Dataset create(DatasetRequest datasetR){
         Dataset createDataset = new Dataset();
 
+        createDataset.setName(datasetR.getName());
+
         Project prt = projectService.findProject(datasetR.getProject());
         createDataset.setProject(prt);
 
