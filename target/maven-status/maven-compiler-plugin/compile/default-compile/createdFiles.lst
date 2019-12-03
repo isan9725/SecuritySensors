@@ -7,6 +7,7 @@ com\proyectonube\jwtauthentication\message\request\ProjectRequest.class
 com\proyectonube\jwtauthentication\model\Project.class
 com\proyectonube\jwtauthentication\repository\DatatypeRepository.class
 com\proyectonube\jwtauthentication\service\details\UserPrinciple.class
+com\proyectonube\jwtauthentication\service\UserService.class
 com\proyectonube\jwtauthentication\service\WebSecurityConfig.class
 com\proyectonube\jwtauthentication\SpringBootJwtAuthenticationApplication.class
 com\proyectonube\jwtauthentication\message\request\DatasetRequest.class
