@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 public class DataRequest {
 
     @NotBlank
-    private String value;
+    private Integer value;
 
     @NotBlank
     private Integer device_id;
@@ -25,7 +25,7 @@ public class DataRequest {
     public DataRequest() {
     }
 
-    public DataRequest(String value, Integer device_id, LocalDateTime date, Integer datatype, Integer dataset) {
+    public DataRequest(Integer value, Integer device_id, LocalDateTime date, Integer datatype, Integer dataset) {
         this.value = value;
         this.device_id = device_id;
         this.date = date;
@@ -33,11 +33,11 @@ public class DataRequest {
         this.dataset = dataset;
     }
 
-    public String getValue() {
+    public Integer getValue() {
         return this.value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Integer value) {
         this.value = value;
     }
 
@@ -73,7 +73,7 @@ public class DataRequest {
         this.dataset = dataset;
     }
 
-    public DataRequest value(String value) {
+    public DataRequest value(Integer value) {
         this.value = value;
         return this;
     }

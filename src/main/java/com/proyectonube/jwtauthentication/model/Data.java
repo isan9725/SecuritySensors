@@ -25,7 +25,7 @@ public class Data{
     private Integer id;
 
     @Column (name = "value")
-    private String value;
+    private Integer value;
 
     @Column(name = "device_id")
     private Integer device_id;
@@ -46,7 +46,7 @@ public class Data{
     public Data() {
     }
 
-    public Data(Integer id, String value, Integer device_id, LocalDateTime date, Datatype datatype, Dataset dataset) {
+    public Data(Integer id, Integer value, Integer device_id, LocalDateTime date, Datatype datatype, Dataset dataset) {
         this.id = id;
         this.value = value;
         this.device_id = device_id;
@@ -63,11 +63,11 @@ public class Data{
         this.id = id;
     }
 
-    public String getValue() {
+    public Integer getValue() {
         return this.value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Integer value) {
         this.value = value;
     }
 
@@ -108,7 +108,7 @@ public class Data{
         return this;
     }
 
-    public Data value(String value) {
+    public Data value(Integer value) {
         this.value = value;
         return this;
     }

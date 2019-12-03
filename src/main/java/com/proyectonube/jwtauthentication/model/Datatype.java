@@ -18,6 +18,8 @@ public class Datatype{
     @Column(name = "name")
     private String name;
 
+    @Column(name = "measure")
+    private String measure;
 
     public Datatype() {
     }
@@ -41,6 +43,20 @@ public class Datatype{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * @return the measure
+     */
+    public String getMeasure() {
+        return measure;
+    }
+
+    /**
+     * @param measure the measure to set
+     */
+    public void setMeasure(String measure) {
+        this.measure = measure;
     }
 
     public Datatype id(Integer id) {

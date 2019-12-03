@@ -23,6 +23,7 @@ public class DatatypeService{
     public Datatype create(Datatype datatype){
         Datatype createDatatype = new Datatype();
         createDatatype.setName(datatype.getName());
+        createDatatype.setMeasure(datatype.getMeasure());
 
         return datatypeRepository.save(createDatatype);
     }
