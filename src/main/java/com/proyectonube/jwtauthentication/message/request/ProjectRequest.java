@@ -12,8 +12,7 @@ public class ProjectRequest{
     @NotBlank
     private String projectName;
 
-    private String token;
-
+    private String username;
 
     public ProjectRequest() {
     }
@@ -54,17 +53,17 @@ public class ProjectRequest{
     }
 
     /**
-     * @return the token
+     * @return the username
      */
-    public String getToken() {
-        return token;
+    public String getUsername() {
+        return username;
     }
-
+    
     /**
-     * @param token the token to set
+     * @param username the username to set
      */
-    public void setToken(String token) {
-        this.token = token;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public ProjectRequest description(String description) {

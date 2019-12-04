@@ -8,7 +8,6 @@ import com.proyectonube.jwtauthentication.model.Message;
 import com.proyectonube.jwtauthentication.model.Project;
 import com.proyectonube.jwtauthentication.model.User;
 import com.proyectonube.jwtauthentication.repository.ProjectRepository;
-import com.proyectonube.jwtauthentication.service.jwt.JwtProvider;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,9 +17,6 @@ public class ProjectService{
 
     @Autowired
     private ProjectRepository projectRepository;
-
-    @Autowired
-    private JwtProvider tokenProvider;
 
     @Autowired
     private UserService userService;
@@ -44,7 +40,7 @@ public class ProjectService{
         createProject.setProjectName(projectR.getProjectName());
         createProject.setDescription(projectR.getDescription());
 
-        String username = tokenProvider.getUserNameFromJwtToken(projectR.getToken());
+        String username = projectR.getUsername();
         User user = userService.getUser(username);
 
         createProject.getUsers().add(user);

@@ -1,10 +1,14 @@
 package com.proyectonube.jwtauthentication.model;
 
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
@@ -45,7 +49,13 @@ public class User{
     @Size(min=6, max = 100)
     private String password;
 
-    
+    @ManyToMany(fetch = FetchType.LAZY, 
+    cascade = {
+        CascadeType.MERGE,
+        CascadeType.PERSIST
+    },
+    mappedBy = "users")
+    private List<Project> projects;
 
     public User() {}
 

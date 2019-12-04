@@ -1,6 +1,7 @@
 package com.proyectonube.jwtauthentication.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.proyectonube.jwtauthentication.message.request.DatasetRequest;
 import com.proyectonube.jwtauthentication.model.Dataset;
@@ -24,7 +25,8 @@ public class DatasetService{
     }
 
     public Dataset findDataset(Integer id_dataset){
-        Dataset ds = datasetRepository.getOne(id_dataset);
+        Optional<Dataset> optds = datasetRepository.findById(id_dataset);
+        Dataset ds = optds.get();
         return ds;
     }
 

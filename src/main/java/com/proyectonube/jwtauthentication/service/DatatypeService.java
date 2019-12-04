@@ -29,7 +29,8 @@ public class DatatypeService{
     }
 
     public Datatype findDatatype(Integer id_datatype){
-        Datatype dt = datatypeRepository.getOne(id_datatype);
+        Optional<Datatype> optdt = datatypeRepository.findById(id_datatype);
+        Datatype dt = optdt.get();
         return dt;
     }
 
